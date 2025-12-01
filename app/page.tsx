@@ -1,7 +1,10 @@
+/** @jsxImportSource react */
 "use client";
 import React, { useState } from 'react';
 import { Camera, Film, Award, Mail, Phone, MapPin, Play, X, Menu } from 'lucide-react';
-
+import logo from './logo.jpg'
+import prem from './prem.png'
+import sangvi from './sangvi.png'
 // Navigation Component
 const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string; setCurrentPage: (page: string) => void; }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,7 +16,7 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string; setCurre
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold text-gold tracking-wider cursor-pointer" onClick={() => setCurrentPage('Home')}>
-            SB PRODUCTIONS
+           <img src={logo.src} alt="Logo" className="h-10 w-auto mr-2" />
           </div>
           
           {/* Desktop Menu */}
@@ -62,12 +65,12 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string; setCurre
 };
 
 // Footer Component
-const Footer = () => (
+const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void; }) => (
   <footer className="bg-black border-t border-gold/20 py-12">
     <div className="max-w-7xl mx-auto px-6">
       <div className="grid md:grid-cols-3 gap-8 mb-8">
-        <div>
-          <h3 className="text-gold text-xl font-bold mb-4">SB PRODUCTIONS</h3>
+        <div onClick={() => setCurrentPage('Home')} >
+          <h3  className=" cursor-pointer text-gold text-xl font-bold mb-4" >  <img  src={logo.src} alt="Logo" className="h-10 w-auto mr-2" /></h3>
           <p className="text-gray-400 text-sm leading-relaxed">
             Crafting cinematic stories that resonate. Excellence in every frame.
           </p>
@@ -246,13 +249,24 @@ const FilmsPage = () => {
   const [selectedFilm, setSelectedFilm] = useState<Film | null>(null);
   
   const films = [
-    { id: 1, title: 'Shadows of Tomorrow', year: '2024', genre: 'Drama', img: 'photo-1542204165-65bf26472b9b' },
-    { id: 2, title: 'Urban Legends', year: '2023', genre: 'Thriller', img: 'photo-1535016120720-40c646be5580' },
-    { id: 3, title: 'Echoes', year: '2023', genre: 'Mystery', img: 'photo-1489599849927-2ee91cede3ba' },
-    { id: 4, title: 'The Last Frame', year: '2022', genre: 'Documentary', img: 'photo-1574267432644-f610bcf57b02' },
-    { id: 5, title: 'Midnight Stories', year: '2022', genre: 'Horror', img: 'photo-1485846234160-0a1dd7228f2d' },
-    { id: 6, title: 'Horizon', year: '2021', genre: 'Sci-Fi', img: 'photo-1536440136628-849c177e76a1' }
-  ];
+    // 1. Using the locally imported 'prem' image
+    { id: 1, title: 'PREM PRAKARAN ', year: '2024', genre: 'Drama', img: prem.src }, 
+    
+    // 2. Using the locally imported 'sangvi' image
+    { id: 2, title: 'SANGHAVI AND SONS ', year: '2023', genre: 'Thriller', img: sangvi.src }, 
+    
+    // 3. Using a remote image URL (e.g., Unsplash)
+    { id: 3, title: 'Echoes', year: '2023', genre: 'Mystery', img: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600' },
+    
+    // 4. Using a remote image URL
+    { id: 4, title: 'The Last Frame', year: '2022', genre: 'Documentary', img: 'https://images.unsplash.com/photo-1574267432644-f610bcf57b02?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600' },
+    
+    // 5. Using a remote image URL
+    { id: 5, title: 'Midnight Stories', year: '2022', genre: 'Horror', img: 'https://images.unsplash.com/photo-1485846234160-0a1dd7228f2d?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600' },
+    
+    // 6. Using a remote image URL
+    { id: 6, title: 'Horizon', year: '2021', genre: 'Sci-Fi', img: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=600' }
+];
   
   return (
     <div className="min-h-screen bg-black pt-24 pb-20 px-6">
@@ -264,30 +278,34 @@ const FilmsPage = () => {
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
-          {films.map(film => (
-            <div 
-              key={film.id} 
-              onClick={() => setSelectedFilm(film)}
-              className="group cursor-pointer relative overflow-hidden aspect-[2/3]"
-            >
-              <img 
-                src={`https://images.unsplash.com/${film.img}?w=600&q=80`}
+    {films.map(film => (
+        <div 
+            key={film.id} 
+            onClick={() => setSelectedFilm(film)}
+            className="group cursor-pointer relative overflow-hidden aspect-[2/3]"
+        >
+            <img 
+                src={film.img} // Use film.img directly as it now holds the correct path/URL
                 alt={film.title}
+                // The styles below ensure the image covers the container and has a hover effect
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent">
+            />
+            {/* Overlay for text and gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent">
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="text-gold text-xs tracking-widest mb-2">{film.genre}</div>
-                  <h3 className="text-white text-2xl font-bold mb-2">{film.title}</h3>
-                  <p className="text-gray-400 text-sm">{film.year}</p>
+                    <div className="text-gold text-xs tracking-widest mb-2">{film.genre}</div>
+                    <h3 className="text-white text-2xl font-bold mb-2">{film.title}</h3>
+                    <p className="text-gray-400 text-sm">{film.year}</p>
                 </div>
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <Play className="text-gold w-16 h-16" />
-              </div>
             </div>
-          ))}
+            {/* Overlay for Play Icon on hover */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                {/* Ensure you have imported the Play icon component, e.g., from 'lucide-react' */}
+                <Play className="text-gold w-16 h-16" /> 
+            </div>
         </div>
+    ))}
+</div>
       </div>
       
       {/* Film Detail Modal */}
@@ -458,23 +476,23 @@ const ContactPage = () => {
                 <Mail className="text-gold w-6 h-6 mt-1" />
                 <div>
                   <h3 className="text-white font-semibold mb-2">Email</h3>
-                  <p className="text-gray-400">contact@sanjaybhatt.com</p>
-                  <p className="text-gray-400">info@sbproductions.com</p>
+                  <p className="text-gray-400">sanjaybhattproductions@gmail.com</p>
+                  {/* <p className="text-gray-400">info@sbproductions.com</p> */}
                 </div>
               </div>
               <div className="flex items-start gap-4 mb-6">
                 <Phone className="text-gold w-6 h-6 mt-1" />
                 <div>
                   <h3 className="text-white font-semibold mb-2">Phone</h3>
-                  <p className="text-gray-400">+91 98765 43210</p>
-                  <p className="text-gray-400">+91 98765 43211</p>
+                  <p className="text-gray-400">+91 9825140710</p>
+                  <p className="text-gray-400">+91 9426409333</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <MapPin className="text-gold w-6 h-6 mt-1" />
                 <div>
                   <h3 className="text-white font-semibold mb-2">Office</h3>
-                  <p className="text-gray-400">Film City Complex<br/>Andheri West, Mumbai<br/>Maharashtra 400053</p>
+                  <p className="text-gray-400">“ 1204”12th floor ,north block ,Twinstar building near nana mava circle, 150 feet main road rajkot -360004</p>
                 </div>
               </div>
             </div>
@@ -522,7 +540,7 @@ export default function App() {
       {currentPage === 'Services' && <ServicesPage />}
       {currentPage === 'Contact' && <ContactPage />}
       
-      <Footer />
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 }
