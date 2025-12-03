@@ -15,7 +15,7 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string; setCurre
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold text-gold tracking-wider cursor-pointer" onClick={() => setCurrentPage('Home')}>
-           <img src={logo.src} alt="Logo" className="h-20 w-auto mr-2" />
+           <img src={logo.src} alt="Logo" className="h-20 w-30 mr-2" />
           </div>
           
           {/* Desktop Menu */}
