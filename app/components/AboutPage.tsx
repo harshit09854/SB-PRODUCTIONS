@@ -3,54 +3,12 @@
 import React from 'react';
 import SanjayBhatt from '../SanjayBhatt.png';
 import kevin from '../kevin.png'
+import rohitsir from '../rohitsir.jpg'
 // About Page
 const AboutPage = () => (
   <div className="min-h-screen bg-black pt-15 pb-20 px-6">
     <div className="max-w-6xl mx-auto">
       {/* Hero Section */}
-      <div className="grid md:grid-cols-2 gap-12  mb-5 ">
-        <div className="relative aspect-[3/4] overflow-hidden">
-          <img 
-            src={SanjayBhatt.src}
-            alt="Sanjay Bhatt"
-            className="w-100 h-100 mt-40 object-cover transition-all duration-700"
-          />
-          <div className="absolute inset-0 border-4 border-gold/30 -m-4" />
-        </div>
-        <div className="flex flex-col justify-center mt-10">
-          {/* <div className="text-gold text-sm tracking-widest mb-4">ABOUT THE DIRECTOR</div> */}
-          <h1 className="text-5xl font-bold text-white mb-6 ">Sanjay Bhatt</h1>
-          <p className="text-gray-300 text-lg leading-relaxed mb-6">
-            With over 15 years of experience in filmmaking, I bring stories to life through a unique blend of visual poetry and narrative depth. My work spans feature films, documentaries, and commercial projects.
-          </p>
-          <p className="text-gray-300 text-lg leading-relaxed">
-            Every frame is a canvas. Every story deserves to be told with passion, precision, and purpose.
-          </p>
-        </div>
-      </div>
-
-
-
-      <div className="grid md:grid-cols-2 gap-12  mb-10 ">
-        <div className="relative aspect-[3/4] overflow-hidden">
-          <img 
-            src={kevin.src}
-            alt="Sanjay Bhatt"
-            className="w-100 h-100 mt-30 object-cover transition-all duration-700"
-          />
-          <div className="absolute inset-0 border-4 border-gold/30 -m-4" />
-        </div>
-        <div className="flex flex-col justify-center mt-5  ">
-          {/* <div className="text-gold text-sm tracking-widest mb-4">ABOUT THE DIRECTOR</div> */}
-          <h1 className="text-5xl font-bold text-white mb-6">Kevin Bhatt</h1>
-          <p className="text-gray-300 text-lg leading-relaxed mb-6">
-            With over 15 years of experience in filmmaking, I bring stories to life through a unique blend of visual poetry and narrative depth. My work spans feature films, documentaries, and commercial projects.
-          </p>
-          <p className="text-gray-300 text-lg leading-relaxed">
-            Every frame is a canvas. Every story deserves to be told with passion, precision, and purpose.
-          </p>
-        </div>
-      </div>
       
       {/* Timeline */}
       {/* <div className="mb-20">
@@ -74,11 +32,42 @@ const AboutPage = () => (
       </div> */}
       {/* Intro// */}
       <div className='mt-2 '>
-        <h1 className=' text-5xl font-bold text-white mb-6 text-center' >Introduction</h1>
+        <h1 className=' text-5xl font-bold text-white mb-6 text-center mt-10' >Introduction</h1>
         <p className="text-gray-300 text-2xl leading-relaxed mb-6 ">Sanjay Bhatt Production, founded by Sanjay Bhatt and Kevin Bhatt. The company focuses on delivering excellence in film and entertainment production, combining creativity with professionalism to bring unique stories to life. It stands as a beacon for authentic storytelling in cinema. Founded on a vision to showcase rich cultural narratives, we blend traditional artistry with contemporary filmmaking techniques to create compelling and resonant cinematic experiences.</p>
         </div>
+        <div>
+        <h1 className=' text-5xl font-bold text-white mb-6 text-center' >Our Team</h1>
+        <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div>
+            <img 
+              src={SanjayBhatt.src}
+              alt="Sanjay Bhatt"
+              className="w-full h-auto object-cover transition-all duration-700"
+            />
+             <h1 className="text-xl font-bold text-white mb-6 ">Sanjay Bhatt</h1>
+            <p className="text-white mt-2">CEO - EXPRESS ELEVATORS</p>
+          </div>
+          <div>
+            <img 
+              src={kevin.src}
+              alt="Kevin"
+              className="w-full h-auto object-cover transition-all duration-700"
+            />
+             <h1 className="text-xl font-bold text-white mb-6 ">Kevin Bhatt</h1>
+            <p className="text-white mt-2">CEO - EXPRESS ELEVATORS</p>
+          </div>
+          <div>
+            <img 
+              src={rohitsir.src}
+              alt="Rohitsir"
+              className="w-full h-auto object-cover transition-all duration-700"
+            />
+            <p className="text-white mt-2">Rohitsir</p>
+          </div>
+        </div>
+      </div>
       {/* Stats */}
-      <div className="grid md:grid-cols-4 gap-8 text-center">
+      <div className="grid md:grid-cols-4 gap-8 text-center mt-10">
         {[
           { num: '15+', label: 'Years Experience' },
           { num: '50+', label: 'Projects' },
