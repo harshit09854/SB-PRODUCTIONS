@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 "use client";
 import React from 'react';
-import logo from '../logo.jpg';
+import logo from '../logo.png';
 
 // Footer Component
 const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void; }) => (
@@ -9,7 +9,7 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void; })
     <div className="max-w-7xl mx-auto px-6">
       <div className="grid md:grid-cols-3 gap-8 mb-8">
         <div onClick={() => setCurrentPage('Home')} >
-          <h3  className=" cursor-pointer text-gold text-xl font-bold mb-4" >  <img  src={logo.src} alt="Logo" className="h-10 w-auto mr-2" /></h3>
+          <h3  className=" cursor-pointer text-gold text-xl font-bold mb-4" >  <img  src={logo.src} alt="Logo" className="h-40 w-auto  mr-2" /></h3>
           <p className="text-gray-400 text-sm leading-relaxed">
             Crafting cinematic stories that resonate. Excellence in every frame.
           </p>
