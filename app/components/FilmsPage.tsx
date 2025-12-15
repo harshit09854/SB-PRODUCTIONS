@@ -75,7 +75,7 @@ const FilmsPage = () => {
       {/* Film Detail Modal */}
       {selectedFilm && (
         <div className="fixed inset-0 bg-[#0D0D0D]/90 backdrop-blur-sm z-50 flex items-center justify-center p-6" onClick={() => setSelectedFilm(null)}>
-          <div className="max-w-4xl w-full bg-[#FAF7F2] border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-2xl" onClick={e => e.stopPropagation()}>
+          <div className="max-w-4xl w-full bg-[#FAF7F2] border border-[rgba(0,0,0,0.06)] rounded-2xl shadow-2xl flex flex-col max-h-[90vh]" onClick={e => e.stopPropagation()}>
             <div className="relative aspect-video">
               {selectedFilm.youtubeVideoId ? (
                 <iframe
@@ -84,7 +84,7 @@ const FilmsPage = () => {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  className="w-full h-full rounded-t-2xl"
+                  className="w-full h-full rounded-t-2xl auto-adjust"
                 ></iframe>
               ) : (
                 <img src={selectedFilm.img} alt={selectedFilm.title} className="w-full h-full object-cover rounded-t-2xl" />
@@ -96,7 +96,7 @@ const FilmsPage = () => {
                 <X className="w-8 h-8" />
               </button>
             </div>
-            <div className="p-8">
+            <div className="p-8 overflow-y-auto">
               <div className="text-[#FF7A00] text-xs tracking-widest mb-2">{selectedFilm.genre}</div>
               <h2 className="text-3xl font-bold text-[#0D0D0D] mb-4">{selectedFilm.title}</h2>
               <p className="text-[#B11226] mb-4">Year: {selectedFilm.year}</p>
@@ -113,4 +113,3 @@ const FilmsPage = () => {
 };
 
 export default FilmsPage;
-
